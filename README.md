@@ -1,4 +1,4 @@
-IP-proj
+Internet Programing homework project: To-Do list
 =======
 
-Simple to-do list
+Simple session based to-do list.
