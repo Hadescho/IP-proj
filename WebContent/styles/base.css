@@ -1,0 +1,9 @@
+body{
+	background-color: #F6F4F0;
+	}
+#wrapper {
+        min-height: 100%;
+        height: auto !important;
+        height: 100%;
+        padding: 30px;
+        }
