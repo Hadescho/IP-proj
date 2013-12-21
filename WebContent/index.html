@@ -1,31 +1,55 @@
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="UTF-8">
+	<head>
+	<!-- Jquery plugins-->
+		<script src="./js/libs/jquery-1.10.2/jquery-1.10.2.min.js"></script>
+		<script src="./js/libs/jqueryui-1.10.0/jquery-ui.min.js"></script>
+		<script src="./bootstrap/js/bootstrap.js" type="text/javascript" charset="utf-8"></script>
+		<script src="./js/ajaxdata.js" type="text/javascript" charset="utf-8"> </script> 
+		<script src="./js/libs/mustache.js" type="text/javascript" charset="utf-8"></script>
+		<script src="./js/libs/jquery-mustache/jquery.mustache.js" type="text/javascript" charset="utf-8"></script>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js">
+	<!-- Bootbox js for alert dialog in the style of bootstrap -->
+		<script src="./js/libs/bootbox.min.js" type="text/javascript" charset="utf-8"></script>
 
-<link rel="stylesheet" type="text/css" href=".\bootstrap\css\bootstrap.min.css">
-<link rel="stylesheet" type="text/css" href="./styles/base.css">
-<title>To-do!</title>
+	<!-- Jquery plugin for validating form data -->
+		<script src="./js/libs/jquery.validate-1.11.1.js" type="text/javascript" charset="utf-8"></script>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" href=".\bootstrap\css\bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="./styles/base.css">
+	<title>To-do!</title>
 </head>
 <body>
-<div id="container">
-	<div class="header">
-		<a href="./index.html"><h3 class="text-muted">To-Do!</h3></a>
+<div class="container">
+	<div class="navbar-inverse navbar-fixed-top">
+		<h1 class="text-muted headerP"><small>To-Do!</small></h1>
 	</div>
 	<div class="realBody">	
-		<div class="col-lg-6">
+		<div class="col-lg-6" id="taskHolder" data-provide="ajax" data-template="messages" data-url="./to-doList">
+			
+			<script type="text/javascript">
+			$(document).ready(function(){
+				
+				$("#submit").click(function(){
+					var task = $("#newTaskBox").val();
+					var formatedTask = "<div class=\"thumbnail task\"><p class=\"pull-left\">" + task + "</p><div class=\"glyphicon glyphicon-ok pull-right\"></div><div class=\"glyphicon glyphicon-edit pull-right\"></div></div>";
 
+					$("#taskHolder").append(formatedTask);
+				});
+			});
+			</script>
 		</div>
 		<div class="col-lg-6">
-			<form class="pull-right">
-				<div class="input-group" id="">
-					<input type="text" class="form-control" placeholder="NewTask">
-					<button class="btn btn-primary">Submit</button>
+		<!--  	<form>-->
+				<div class="input-group pull-center" >
+					<input type="text"class="form-control" id="newTaskBox" placeholder="New Task">
+					<button class="btn btn-primary" id="submit">Add</button>
 				</div>
-
-			</form>
-		</div>
+		<!--  	</form>-->
+		</div>	
 	</div>
 </div>
+
+	
 </body>
 </html>

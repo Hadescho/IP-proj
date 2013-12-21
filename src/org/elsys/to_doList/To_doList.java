@@ -27,6 +27,7 @@ public class To_doList {
  	@Consumes(MediaType.APPLICATION_JSON)
  	public void addTask(Message m)
  	{
+ 		System.out.println(m);
  		taskList.add(m);
  	}
  	

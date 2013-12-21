@@ -13,26 +13,33 @@ public class Message {
 		created = new Date();
 		content = cont;
 	}
+	
 	public Message(){
 		ID = getNextID();
 		created = new Date();
 		content = "Dumy message";
 	}
+	
 	public int getID() {
 		return ID;
 	}
+	
 	public void setID(int iD) {
 		ID = iD;
 	}
+	
 	public Date getCreated() {
 		return created;
 	}
+	
 	public void setCreated(Date created) {
 		this.created = created;
 	}
+	
 	public String getContent() {
 		return content;
 	}
+	
 	public void setContent(String content) {
 		this.content = content;
 	}

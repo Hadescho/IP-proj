@@ -1,9 +1,24 @@
-body{
+body
+{
 	background-color: #F6F4F0;
-	}
-#wrapper {
-        min-height: 100%;
-        height: auto !important;
-        height: 100%;
-        padding: 30px;
-        }
+}
+#wrapper 
+{
+    min-height: 100%;
+    height: auto !important;
+    height: 100%;
+    padding: 30px;
+}
+.realBody
+{
+	margin-top:60px;
+}
+.task
+{
+	min-height: 30px;
+}
+.headerP
+{
+	margin-top: 0px;
+	margin-left: 15px;
+}
