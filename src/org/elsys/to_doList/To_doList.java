@@ -3,27 +3,31 @@ package org.elsys.to_doList;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.ServletContext;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
+import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 
+@Path("list")
 public class To_doList {
- static List<Message> taskList = new ArrayList<Message>();
+	
+	static List<Message> taskList = new ArrayList<Message>();
+	
 	public To_doList() {
 		taskList.add(new Message());
 	}
  	@GET
- 	@Path("to-doList")
  	@Produces(MediaType.APPLICATION_JSON)
 	public List<Message> getTaskList()
 	{
 		return taskList;
 	}
  	@POST
- 	@Path("to-doList/add")
+ 	@Path("todoList/add")
  	@Consumes(MediaType.APPLICATION_JSON)
  	public void addTask(Message m)
  	{
@@ -32,7 +36,7 @@ public class To_doList {
  	}
  	
  	@POST
- 	@Path("to-doList/remove/{id}")
+ 	@Path("todoList/remove/{id}")
  	@Consumes(MediaType.APPLICATION_JSON)
  	public void removeTask(Message m)
  	{
