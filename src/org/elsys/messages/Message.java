@@ -1,4 +1,4 @@
-package org.elsys.to_doList;
+package org.elsys.messages;
 import java.util.Date;
 
 
@@ -14,27 +14,16 @@ public class Message {
 		content = cont;
 	}
 	
-	public Message(){
-		ID = getNextID();
-		created = new Date();
-		content = "Dumy message";
-	}
 	
 	public int getID() {
 		return ID;
 	}
 	
-	public void setID(int iD) {
-		ID = iD;
-	}
 	
 	public Date getCreated() {
 		return created;
 	}
 	
-	public void setCreated(Date created) {
-		this.created = created;
-	}
 	
 	public String getContent() {
 		return content;

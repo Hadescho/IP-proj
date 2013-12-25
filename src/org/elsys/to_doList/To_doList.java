@@ -5,12 +5,17 @@ import java.util.List;
 
 import javax.servlet.ServletContext;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
+
+import org.elsys.messages.Message;
 
 @Path("list")
 public class To_doList {
@@ -18,7 +23,7 @@ public class To_doList {
 	static List<Message> taskList = new ArrayList<Message>();
 	
 	public To_doList() {
-		taskList.add(new Message());
+
 	}
  	@GET
  	@Produces(MediaType.APPLICATION_JSON)
@@ -27,31 +32,42 @@ public class To_doList {
 		return taskList;
 	}
  	@POST
- 	@Path("todoList/add")
+ 	@Path("/add")
  	@Consumes(MediaType.APPLICATION_JSON)
  	public void addTask(Message m)
  	{
- 		System.out.println(m);
+ 		
  		taskList.add(m);
  	}
  	
- 	@POST
- 	@Path("todoList/remove/{id}")
- 	@Consumes(MediaType.APPLICATION_JSON)
- 	public void removeTask(Message m)
+ 	@DELETE
+ 	@Path("/remove/{id}")
+ 	public void removeTask(@PathParam("id") String id)
  	{
- 		taskList.remove(m);
-//		int id = m.getID();
- 		
-// 		for(int i = 0; i < taskList.size();i++)
-// 		{
-// 			if(taskList.get(i).getID() == id)
-// 			{
-// 				taskList.remove(taskList.get(i));
-// 				return true;
-// 			}
-// 		}
-// 		return false;
+ 		Integer intID = Integer.parseInt(id);
+		for(int i = 0; i < taskList.size();i++)
+		{
+			if(taskList.get(i).getID() == intID)
+			{
+				taskList.remove(taskList.get(i));
+			}
+		}
+ 	}
+ 	@PUT
+ 	@Path("/edit/{id}")
+ 	@Consumes(MediaType.APPLICATION_JSON)
+ 	public void editTask(@PathParam("id") String id,String m)
+ 	{
+ 		Integer intID = Integer.parseInt(id);
+ 		for(int i = 0; i < taskList.size();i++)
+		{
+ 			Message mes = taskList.get(i);
+ 			if(mes.getID() == intID)
+			{
+ 				mes.setContent(m);
+			}
+		}
+		
  	}
  	
  
