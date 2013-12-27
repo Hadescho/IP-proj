@@ -23,8 +23,7 @@ $(document).ready(function(){
 			data:task,
 			dataType:"json",
 			contentType: 'application/json'
-		});
-		setTimeout(function(){
+		}).done(function(){
 			window.location.reload(false);
 		},10);
 	});
@@ -33,27 +32,27 @@ $(document).ready(function(){
 		$.ajax({
 			method:'DELETE',
 			url:'todo/list/remove/' + id,
-		});
-		setTimeout(function(){
+		}).done(function(){
 			window.location.reload(false);
-		},10);
+		});
 	});
 	$(document).on('click','.glyphicon-edit',function(){
 		var $parent = $(this).parent('.task');
-		var placeholder = $(this).siblings('.pull-left').val();
+		var placeholder = $(this).siblings('.pull-left').text();
 		var id = $(this).attr('id').replace('e','');
-		$(this).siblings('.task-text').hide();
+		$(this).siblings('.pull-left').hide();
 		$(this).hide();
 		
 		$parent.append(
 				'<div class="input-group pull-center">' +
-					'<input type="text"class="form-control" id="editTaskBox" placeholder='+ placeholder + '>' +
+				'<input type="text"class="form-control" data-id="'+id+'" id="editTaskBox" placeholder="'+ placeholder + '" value="'+ placeholder + '">' +
 					'<span class="input-group-btn">'+
 						'<button class="btn btn-default" id="edit">Edit</button>' +
 					'</span>' +
 				'</div>');
 		$(document).on('click','#edit',function(){
-			var task = $('#editTaskBox').val();
+			var id = $(this).parent().siblings("input").data("id");
+			var task = $(this).parent().siblings("input").val();
 			if(task !== ""){
 				
 				$.ajax({
@@ -62,10 +61,9 @@ $(document).ready(function(){
 					data: task,
 					dataType:"json",
 					contentType: 'application/json'
-				});
-				setTimeout(function(){
+				}).done(function(){
 					window.location.reload(false);
-				},10);
+				});
 				
 			}
 		});
