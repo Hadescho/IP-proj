@@ -25,7 +25,7 @@ $(document).ready(function(){
 			contentType: 'application/json'
 		}).done(function(){
 			window.location.reload(false);
-		},10);
+		});
 	});
 	$(document).on('click','.glyphicon-ok',function(){
 		var id = $(this).attr('id').replace('d','');
